@@ -36,36 +36,42 @@ $choice = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["choice"])) {
 
     $choice = $_POST["choice"];
-    
+
+    $message = "";
 
     if ($choice == "safe") {
 
-    $_SESSION["gas"] -= 10;
+        $_SESSION["gas"] -= 10;
+        $_SESSION["progress"] += 15;
+        $_SESSION["storm"] += 10;   //  replace this with storm movement later.
 
-    $_SESSION["progress"] += 10;
+    } elseif ($choice == "risk") {
 
-    $_SESSION["storm"] += 10;
+    if (rand(0, 1)) {
 
-}
-} elseif ($choice == "risk") {
+        // Success
+        $_SESSION["gas"] -= 15;
+        $_SESSION["progress"] += 20;
+        $_SESSION["morale"] += 5;
 
-    $_SESSION["gas"] -= 20;
+    } else {
 
-    $_SESSION["morale"] -= 10;
+        // Fail
+        $_SESSION["gas"] -= 25;
+        $_SESSION["progress"] += 5;
+        $_SESSION["morale"] -= 15;
 
-    $_SESSION["progress"] += 10;
-
-    $_SESSION["storm"] += 10;
-
-
-} elseif ($choice == "rest") {
-
-    $_SESSION["money"] -= 20;
-
-    $_SESSION["morale"] += 10;
+    }
 
     $_SESSION["storm"] += 10;
 
+    } elseif ($choice == "rest") {
+
+        $_SESSION["money"] -= 20;
+        $_SESSION["morale"] += 10;
+        $_SESSION["storm"] += 10;
+
+    }
 }
 
 include 'header.php';
@@ -138,7 +144,7 @@ include 'header.php';
                 </p>
 
                 <p>
-                    At a gas station outside Augusta, an older man leans against
+                    While pumping gas, you notice an older man leaning against
                     an aging pickup truck.
                 </p>
 
@@ -150,15 +156,17 @@ include 'header.php';
 
                 <p>He shrugs.</p>
 
-                <p><em>"Depends how much you trust your brakes."</em></p>
+                <p><em>"Depends how much you trust your tires."</em></p>
 
                 <p>
-                    As you pull away, another customer points toward the truck.
+                    As you twist the gas cap back on, another stranger points toward the truck.
                 </p>
 
                 <p><em>"That's Gary."</em></p>
 
-                <p>Nobody explains who Gary is.</p>
+                <p><em>The stranger disappears into the building.</em></p>
+
+                <p><i>"Who the hell is Gary?"</i></p>
 
             <?php elseif ($choice == "safe"): ?>
 
@@ -243,44 +251,6 @@ include 'header.php';
         </div>
 
     </div>
-
-</div>
-
-
-<!------------INSTRUCTIONS------------->
-
-
-<div class="instructions">
-
-    <h2>📖 Before You Head Out...</h2>
-
-    <p>
-        Every choice changes your journey.
-    </p>
-
-    <p>
-        Sometimes the safe choice costs you time.
-        Sometimes the risky choice pays off.
-        Sometimes it absolutely does not.
-    </p>
-
-    <p>
-        There isn't always a right answer.
-        You're just trying to make it to Mabel's Cabin in one piece.
-    </p>
-
-    <p class="warning">
-        <strong>Fair warning:</strong>
-        Your choices can change your
-        <strong>Money</strong>,
-        <strong>Gas</strong>,
-        and
-        <strong>Morale</strong>.
-    </p>
-
-    <p class="tiny-note">
-        Try not to become the main character of the next Dateline.
-    </p>
 
 </div>
 
