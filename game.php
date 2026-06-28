@@ -166,7 +166,7 @@ include 'header.php';
 
                 <p><em>The stranger disappears into the building.</em></p>
 
-                <p><i>"Who the hell is Gary?"</i></p>
+                <p><i>Who the hell is Gary?</i></p>
 
             <?php elseif ($choice == "safe"): ?>
 
