@@ -115,7 +115,7 @@ p {
 
 }
 
-/* ---------- Event Area ---------- */
+/* ---------- Events ---------- */
 
 .game-content {
 
@@ -183,6 +183,32 @@ p {
 
     transform: translateY(-2px);
 
+}
+
+
+.restart-form {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.restart-button {
+    background-color: #d9b98d;
+    color: #2d241b;
+    border: 2px solid #9c7442;
+    border-radius: 6px;
+
+    padding: 6px 14px;
+
+    font-family: "Special Elite", cursive;
+    font-size: 0.75rem;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.restart-button:hover {
+    transform: translateY(-2px);
 }
 
 /* ---------- Instructions ---------- */
