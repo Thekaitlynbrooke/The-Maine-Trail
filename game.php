@@ -5,6 +5,11 @@ session_start();
 //---------- Initialize Game ----------
 
 if (!isset($_SESSION["money"])) {
+
+    $_SESSION["location"] = "Portland";
+    $_SESSION["progress"] = 0;
+    $_SESSION["storm"] = 0;
+
     $_SESSION["money"] = 200;
     $_SESSION["gas"] = 100;
     $_SESSION["morale"] = 100;
@@ -13,6 +18,10 @@ if (!isset($_SESSION["money"])) {
 //---------- Restart Game ----------
 
 if (isset($_POST["reset"])) {
+
+    $_SESSION["location"] = "Portland";
+    $_SESSION["progress"] = 0;
+    $_SESSION["storm"] = 0;
 
     $_SESSION["money"] = 200;
     $_SESSION["gas"] = 100;
@@ -27,22 +36,35 @@ $choice = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["choice"])) {
 
     $choice = $_POST["choice"];
+    
 
     if ($choice == "safe") {
 
-        $_SESSION["gas"] -= 10;
+    $_SESSION["gas"] -= 10;
 
-    } elseif ($choice == "risk") {
+    $_SESSION["progress"] += 10;
 
-        $_SESSION["gas"] -= 20;
-        $_SESSION["morale"] -= 10;
+    $_SESSION["storm"] += 10;
 
-    } elseif ($choice == "rest") {
+}
+} elseif ($choice == "risk") {
 
-        $_SESSION["money"] -= 20;
-        $_SESSION["morale"] += 10;
+    $_SESSION["gas"] -= 20;
 
-    }
+    $_SESSION["morale"] -= 10;
+
+    $_SESSION["progress"] += 10;
+
+    $_SESSION["storm"] += 10;
+
+
+} elseif ($choice == "rest") {
+
+    $_SESSION["money"] -= 20;
+
+    $_SESSION["morale"] += 10;
+
+    $_SESSION["storm"] += 10;
 
 }
 
@@ -59,16 +81,20 @@ include 'header.php';
 
         <div class="hud">
 
-            <p>📍 Current Location: Portland</p>
+            <p>
+            📍 Current Location:
+            <br>
+            <?php echo $_SESSION["location"]; ?>
+            </p>
 
             <h3>Progress to Mabel's Cabin</h3>
             <div class="progress-bar">
-                Placeholder
+            <?php echo $_SESSION["progress"]; ?>%
             </div>
 
             <h3>Storm Progress</h3>
             <div class="storm-bar">
-                Placeholder
+            <?php echo $_SESSION["storm"]; ?>%
             </div>
 
             <p>💵 Money: $<?php echo $_SESSION["money"]; ?></p>
@@ -148,7 +174,7 @@ include 'header.php';
                 </p>
 
                 <p><strong>Progress +1</strong></p>
-                <p><strong>Fuel -10</strong></p>
+                <p><strong>Gas -10</strong></p>
 
             <?php elseif ($choice == "risk"): ?>
 
@@ -167,7 +193,7 @@ include 'header.php';
                 </p>
 
                 <p><strong>Progress -1</strong></p>
-                <p><strong>Fuel -20</strong></p>
+                <p><strong>Gas -20</strong></p>
                 <p><strong>Morale -10</strong></p>
 
             <?php elseif ($choice == "rest"): ?>
