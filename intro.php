@@ -30,7 +30,6 @@ include 'header.php';
         <strong>Money</strong>,
         <strong>Gas</strong>,
         <strong>Morale</strong>,
-<n>
         and how quickly you reach your destination📍
     </p>
 
