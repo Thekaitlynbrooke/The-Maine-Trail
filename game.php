@@ -31,6 +31,7 @@ if (isset($_POST["reset"])) {
 }
 
 //---------- Choice Outcomes ----------
+
 $choice = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["choice"])) {
@@ -43,37 +44,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["choice"])) {
 
         $_SESSION["gas"] -= 10;
         $_SESSION["progress"] += 15;
-        $_SESSION["storm"] += 10;   //  replace this with storm movement later.
+        $_SESSION["storm"] += 15;
 
     } elseif ($choice == "risk") {
 
-    if (rand(0, 1)) {
+        if (rand(0, 1)) {
 
-        // Success
-        $_SESSION["gas"] -= 15;
-        $_SESSION["progress"] += 20;
-        $_SESSION["morale"] += 5;
+            // Success
+            $_SESSION["gas"] -= 15;
+            $_SESSION["progress"] += 20;
+            $_SESSION["morale"] += 5;
 
-    } else {
+        } else {
 
-        // Fail
-        $_SESSION["gas"] -= 25;
-        $_SESSION["progress"] += 5;
-        $_SESSION["morale"] -= 15;
+            // Failure
+            $_SESSION["gas"] -= 25;
+            $_SESSION["progress"] += 5;
+            $_SESSION["morale"] -= 15;
 
-    }
+        }
 
-    $_SESSION["storm"] += 10;
+        $_SESSION["storm"] += 15;
 
     } elseif ($choice == "rest") {
 
         $_SESSION["money"] -= 20;
         $_SESSION["morale"] += 10;
-        $_SESSION["storm"] += 10;
+        $_SESSION["storm"] += 15;
 
     }
-}
 
+    // Keep the storm from exceeding 100%
+    if ($_SESSION["storm"] > 100) {
+        $_SESSION["storm"] = 100;
+    }
+
+    // Keep progress from exceeding 100%
+if ($_SESSION["progress"] > 100) {
+    $_SESSION["progress"] = 100;
+}
+}
 include 'header.php';
 ?>
 
