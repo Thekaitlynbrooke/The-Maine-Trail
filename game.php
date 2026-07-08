@@ -1,6 +1,40 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['money'])) {
+    $_SESSION['money'] = 200;
+    $_SESSION['gas'] = 100;
+    $_SESSION['morale'] = 100;
+    $_SESSION['progress'] = 0;
+    $_SESSION['storm'] = 0;
+}
+
+if (isset($_POST['choice'])) {
+
+    if ($_POST['choice'] == 'travel') {
+
+        $_SESSION['progress'] += 15;
+        $_SESSION['gas'] -= 10;
+        $_SESSION['storm'] += 10;
+
+    }
+if ($_POST['choice'] == 'reset') {
+
+    session_destroy();
+
+    header("Location: game.php");
+
+    exit();
+
+}
+
+}
+
 include 'header.php';
+
 ?>
+
 
 <h1>The Maine Trail</h1>
 
@@ -11,18 +45,26 @@ include 'header.php';
         <p>📍 Current Location: Portland</p>
 
         <h3>Progress to Mabel's Cabin</h3>
+
         <div class="progress-bar">
-            Placeholder
-        </div>
+
+            <?php echo $_SESSION['progress']; ?>%
+
+    </div>
 
         <h3>Storm Progress</h3>
-        <div class="storm-bar">
-            Placeholder
-        </div>
 
-        <p>💵 Money: $200</p>
-        <p>⛽ Gas: 100%</p>
-        <p>❤️ Morale: 100%</p>
+        <div class="storm-bar">
+
+            <?php echo $_SESSION['storm']; ?>%
+
+    </div>
+
+        <p>💵 Money: $<?php echo $_SESSION['money']; ?></p>
+
+        <p>⛽ Gas: <?php echo $_SESSION['gas']; ?>%</p>
+
+        <p>❤️ Morale: <?php echo $_SESSION['morale']; ?>%</p>
 
     </div>
 
@@ -39,15 +81,29 @@ include 'header.php';
 
         </div>
 
-        <div class="choices">
+       <div class="choices">
 
-            <button>Travel</button>
+    <form method="post">
 
-            <button>Rest</button>
+        <button type="submit" name="choice" value="travel">
+            Travel
+        </button>
 
-            <button>Visit Store</button>
+        <button type="submit" name="choice" value="rest">
+            Rest
+        </button>
 
-        </div>
+        <button type="submit" name="choice" value="store">
+            Visit Store
+        </button>
+
+        <button type="submit" name="choice" value="reset">
+            Reset Game
+        </button>
+
+    </form>
+
+</div>
 
     </div>
 
