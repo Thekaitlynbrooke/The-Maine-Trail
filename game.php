@@ -28,6 +28,27 @@ if (isset($_POST['choice'])) {
 
     }
 
+    if ($_POST['choice'] == 'risk') {
+
+        $chance = rand(1, 2);
+
+    if ($chance == 1) {
+
+        $_SESSION['progress'] += 20;
+        $_SESSION['gas'] -= 15;
+        $_SESSION['morale'] += 5;
+
+    } else {
+
+        $_SESSION['progress'] += 5;
+        $_SESSION['gas'] -= 25;
+        $_SESSION['morale'] -= 15;
+
+    }
+
+        $_SESSION['storm'] += 10;
+
+}
     if ($_POST['choice'] == 'reset') {
         session_destroy();
         header("Location: game.php");
@@ -99,7 +120,7 @@ include 'header.php';
             Rest
         </button>
 
-        <button type="submit" name="choice" value="store">
+        <button type="submit" name="choice" value="risk">
             Visit Store
         </button>
 
