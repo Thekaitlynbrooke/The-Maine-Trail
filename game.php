@@ -1,16 +1,25 @@
 <?php
 
 session_start();
-
+// HUD
 if (!isset($_SESSION['money'])) {
     $_SESSION['money'] = 200;
     $_SESSION['gas'] = 100;
     $_SESSION['morale'] = 100;
     $_SESSION['progress'] = 0;
     $_SESSION['storm'] = 0;
+    $_SESSION['status'] = "playing";
 }
+// Choice Meter
 
-if (isset($_POST['choice'])) {
+    if ($_POST['choice'] == 'reset') {
+        session_destroy();
+        header("Location: game.php");
+        exit();
+
+    }
+
+    if (isset($_POST['choice']) && $_SESSION['status'] == "playing") {
 
     if ($_POST['choice'] == 'travel') {
 
@@ -36,25 +45,70 @@ if (isset($_POST['choice'])) {
 
         $_SESSION['progress'] += 20;
         $_SESSION['gas'] -= 15;
-        $_SESSION['morale'] += 5;
+        $_SESSION['morale'] += 15;
 
     } else {
 
         $_SESSION['progress'] += 5;
         $_SESSION['gas'] -= 25;
-        $_SESSION['morale'] -= 15;
+        $_SESSION['morale'] -= 50;
 
     }
 
         $_SESSION['storm'] += 10;
 
 }
-    if ($_POST['choice'] == 'reset') {
-        session_destroy();
-        header("Location: game.php");
-        exit();
+    
 
-    }
+}
+
+// Keep values within display limits
+
+if ($_SESSION['gas'] < 0) {
+
+    $_SESSION['gas'] = 0;
+
+}
+
+if ($_SESSION['morale'] < 0) {
+
+    $_SESSION['morale'] = 0;
+
+}
+
+if ($_SESSION['progress'] > 100) {
+
+    $_SESSION['progress'] = 100;
+
+}
+
+if ($_SESSION['storm'] > 100) {
+
+    $_SESSION['storm'] = 100;
+
+}
+
+if ($_SESSION['progress'] >= 100) {
+
+    $_SESSION['status'] = "win";
+
+}
+
+if ($_SESSION['gas'] <= 0) {
+
+    $_SESSION['status'] = "gas";
+
+}
+
+if ($_SESSION['morale'] <= 0) {
+
+    $_SESSION['status'] = "morale";
+
+}
+
+if ($_SESSION['storm'] >= 100) {
+
+    $_SESSION['status'] = "storm";
 
 }
 
@@ -101,7 +155,10 @@ include 'header.php';
         <div class="event-window">
 
             <h2>Today's Event</h2>
-
+            <h3>
+                Status:
+                <?php echo $_SESSION['status']; ?>
+            </h3>
             <p>
                 Placeholder event text goes here.
             </p>
