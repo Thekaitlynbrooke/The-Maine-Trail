@@ -19,15 +19,21 @@ if (isset($_POST['choice'])) {
         $_SESSION['storm'] += 10;
 
     }
-if ($_POST['choice'] == 'reset') {
 
-    session_destroy();
+    if ($_POST['choice'] == 'rest') {
 
-    header("Location: game.php");
+        $_SESSION['money'] -= 20;
+        $_SESSION['morale'] += 10;
+        $_SESSION['storm'] += 10;
 
-    exit();
+    }
 
-}
+    if ($_POST['choice'] == 'reset') {
+        session_destroy();
+        header("Location: game.php");
+        exit();
+
+    }
 
 }
 
