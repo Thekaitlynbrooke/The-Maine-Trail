@@ -18,7 +18,7 @@
     A cozy survival adventure through the great state of Maine.
 </p>
 
-<a href="game.php" class="start-button">Start Adventure</a>
+<a href="intro.php" class="start-button">Start Adventure</a>
 
 <p class="quote">
     "You read Stephen King?" — Gary
