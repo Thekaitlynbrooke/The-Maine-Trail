@@ -16,9 +16,7 @@ if (!isset($_SESSION['money'])) {
         session_destroy();
         header("Location: game.php");
         exit();
-
     }
-
     if (isset($_POST['choice']) && $_SESSION['status'] == "playing") {
 
     if ($_POST['choice'] == 'travel') {
@@ -26,193 +24,125 @@ if (!isset($_SESSION['money'])) {
         $_SESSION['progress'] += 15;
         $_SESSION['gas'] -= 10;
         $_SESSION['storm'] += 10;
-
     }
-
     if ($_POST['choice'] == 'rest') {
 
         $_SESSION['money'] -= 20;
         $_SESSION['morale'] += 10;
         $_SESSION['storm'] += 10;
-
     }
-
     if ($_POST['choice'] == 'risk') {
-
         $chance = rand(1, 2);
 
     if ($chance == 1) {
-
         $_SESSION['progress'] += 20;
         $_SESSION['gas'] -= 15;
         $_SESSION['morale'] += 15;
 
     } else {
-
         $_SESSION['progress'] += 5;
         $_SESSION['gas'] -= 25;
         $_SESSION['morale'] -= 50;
-
     }
-
         $_SESSION['storm'] += 10;
-
 }
-    
-
 }
-
 // Keep values within display limits
-
 if ($_SESSION['gas'] < 0) {
-
     $_SESSION['gas'] = 0;
-
 }
-
 if ($_SESSION['morale'] < 0) {
-
     $_SESSION['morale'] = 0;
-
 }
-
 if ($_SESSION['progress'] > 100) {
-
     $_SESSION['progress'] = 100;
-
 }
-
 if ($_SESSION['storm'] > 100) {
-
     $_SESSION['storm'] = 100;
-
 }
-
 if ($_SESSION['progress'] >= 100) {
-
     $_SESSION['status'] = "win";
-
 }
-
 if ($_SESSION['gas'] <= 0) {
-
     $_SESSION['status'] = "gas";
-
 }
-
 if ($_SESSION['morale'] <= 0) {
-
     $_SESSION['status'] = "morale";
-
 }
-
 if ($_SESSION['storm'] >= 100) {
-
     $_SESSION['status'] = "storm";
 
 }
-
 include 'header.php';
-
 ?>
 
 
 <h1>The Maine Trail</h1>
 
 <div class="game-layout">
-
     <div class="hud">
-
         <p>📍 Current Location: Portland</p>
-
         <h3>Progress to Mabel's Cabin</h3>
-
         <div class="progress-bar">
-
             <?php echo $_SESSION['progress']; ?>%
 
     </div>
-
         <h3>Storm Progress</h3>
-
         <div class="storm-bar">
-
             <?php echo $_SESSION['storm']; ?>%
-
-    </div>
+        </div>
 
         <p>💵 Money: $<?php echo $_SESSION['money']; ?></p>
-
         <p>⛽ Gas: <?php echo $_SESSION['gas']; ?>%</p>
-
         <p>❤️ Morale: <?php echo $_SESSION['morale']; ?>%</p>
-
     </div>
 
-
     <div class="game-content">
-
         <div class="event-window">
-
             <h2>Today's Event</h2>
             <h3>
                 Status:
                 <?php echo $_SESSION['status']; ?>
             </h3>
             <p>
-                Placeholder event text goes here.
+                Placeholder event
             </p>
-
         </div>
 
        <div class="choices">
 
     <form method="post">
-
         <button type="submit" name="choice" value="travel">
             Travel
         </button>
-
         <button type="submit" name="choice" value="rest">
             Rest
         </button>
-
         <button type="submit" name="choice" value="risk">
             Visit Store
         </button>
-
         <button type="submit" name="choice" value="reset">
             Reset Game
         </button>
-
     </form>
-
 </div>
-
     </div>
-
 </div>
-
-
 <div class="instructions">
 
     <h2>📖 Before You Head Out...</h2>
-
     <p>
         Every choice changes your journey.
     </p>
-
     <p>
         Sometimes the safe choice costs you time.
         Sometimes the risky choice pays off.
         Sometimes it absolutely does not.
     </p>
-
     <p>
         There isn't always a right answer.
         You're just trying to make it to Mabel's Cabin in one piece.
     </p>
-
     <p class="warning">
         <strong>Fair warning:</strong>
         Your choices can change your
@@ -220,7 +150,6 @@ include 'header.php';
         <strong>Gas</strong>, and
         <strong>Morale</strong>.
     </p>
-
     <p class="tiny-note">
         Try not to become the main character of the next Dateline.
     </p>
