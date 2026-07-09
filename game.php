@@ -9,6 +9,7 @@ if (!isset($_SESSION['money'])) {
     $_SESSION['progress'] = 0;
     $_SESSION['storm'] = 0;
     $_SESSION['status'] = "playing";
+    $_SESSION['message'] = "";
 }
 // Choice Meter
 
@@ -21,29 +22,37 @@ if (!isset($_SESSION['money'])) {
 
     if ($_POST['choice'] == 'travel') {
 
-        $_SESSION['progress'] += 15;
-        $_SESSION['gas'] -= 10;
-        $_SESSION['storm'] += 10;
-    }
+    $_SESSION['progress'] += 15;
+    $_SESSION['gas'] -= 10;
+    $_SESSION['storm'] += 10;
+    $_SESSION['message'] = "You stay on the interstate. It's uneventful. Which, considering the last conversation you had, feels like a win.";
+}
+        
     if ($_POST['choice'] == 'rest') {
 
-        $_SESSION['money'] -= 20;
-        $_SESSION['morale'] += 10;
-        $_SESSION['storm'] += 10;
-    }
+    $_SESSION['money'] -= 20;
+    $_SESSION['morale'] += 10;
+    $_SESSION['storm'] += 10;
+
+    $_SESSION['message'] = "You settle in for the night. Tomorrow's problems can wait until tomorrow.";
+}
     if ($_POST['choice'] == 'risk') {
         $chance = rand(1, 2);
 
     if ($chance == 1) {
-        $_SESSION['progress'] += 20;
-        $_SESSION['gas'] -= 15;
-        $_SESSION['morale'] += 15;
+    $_SESSION['progress'] += 20;
+    $_SESSION['gas'] -= 15;
+    $_SESSION['morale'] += 15;
 
-    } else {
-        $_SESSION['progress'] += 5;
-        $_SESSION['gas'] -= 25;
-        $_SESSION['morale'] -= 50;
-    }
+    $_SESSION['message'] = "The shortcut actually works. You reconnect with the interstate ahead of schedule. Maybe Gary knows what he's talking about after all.";
+
+} else {
+    $_SESSION['progress'] += 5;
+    $_SESSION['gas'] -= 25;
+    $_SESSION['morale'] -= 50;
+
+    $_SESSION['message'] = "The shortcut becomes two muddy tire tracks. Your GPS loses signal... and so does your confidence. By the time you find pavement again, you're pretty sure Gary measures distance in emotional damage.";
+}
         $_SESSION['storm'] += 10;
 }
 }
@@ -106,6 +115,7 @@ include 'header.php';
     <div class="game-content">
         <div class="event-window">
             <h2>The Journey Begins</h2>
+           <?php if ($_SESSION['message'] == "") { ?> 
 <p>You leave Portland just after sunrise with a full tank of gas,
 a hot coffee, and Google Maps confidently insisting you'll be
 at Mabel's cabin before dinner.</p>
@@ -121,25 +131,51 @@ a pickup truck that's seen better decades.</p>
 <p> "That's Gary."</p>
 <p> "Who's Gary?"</p>
 <p> "You know... Gary."</p>
+<?php } ?>
+<?php if ($_SESSION['message'] != "") { ?>
 
+    <div class="outcome">
+        <p>
+            <?php echo $_SESSION['message']; ?>
+        </p>
+    </div>
+
+<?php } ?>
         </div>
 
        <div class="choices">
 
-    <form method="post">
-        <button type="submit" name="choice" value="travel">
-            Stay on I-95
-        </button>
-        <button type="submit" name="choice" value="rest">
-            Stay in Augusta
-        </button>
-        <button type="submit" name="choice" value="risk">
-            Follow Gary's Shortcut
-        </button>
-        <button type="submit" name="choice" value="reset">
-            Reset Game
-        </button>
-    </form>
+<form method="post">
+
+<?php if ($_SESSION['message'] == "") { ?>
+
+    <button type="submit" name="choice" value="travel">
+        Stay on I-95
+    </button>
+
+    <button type="submit" name="choice" value="rest">
+        Stay in Augusta
+    </button>
+
+    <button type="submit" name="choice" value="risk">
+        Follow Gary's Shortcut
+    </button>
+
+<?php } else { ?>
+
+    <button type="submit" name="choice" value="next">
+        🚗💨
+    </button>
+
+<?php } ?>
+
+
+<button type="submit" name="choice" value="reset">
+    Reset Game
+</button>
+
+</form>
+
 </div>
     </div>
 </div>
