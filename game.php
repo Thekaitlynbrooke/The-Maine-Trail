@@ -105,27 +105,36 @@ include 'header.php';
 
     <div class="game-content">
         <div class="event-window">
-            <h2>Today's Event</h2>
-            <h3>
-                Status:
-                <?php echo $_SESSION['status']; ?>
-            </h3>
-            <p>
-                Placeholder event
-            </p>
+            <h2>The Journey Begins</h2>
+<p>You leave Portland just after sunrise with a full tank of gas,
+a hot coffee, and Google Maps confidently insisting you'll be
+at Mabel's cabin before dinner.</p>
+<p>Outside a gas station near Augusta, an older man leans against
+a pickup truck that's seen better decades.</p>
+<p>He nods toward the gray sky.</p>
+<p>"Storm's comin' early this year."</p>
+<p>"...Should I be worried?"</p>
+<p>"Depends how much you trust your brakes."</p>
+<p>Well.</p>
+<p>That wasn't ominous at all.</p>
+<p> As you're pulling getting back in the car, another customer points toward the truck. </p>
+<p> "That's Gary."</p>
+<p> "Who's Gary?"</p>
+<p> "You know... Gary."</p>
+
         </div>
 
        <div class="choices">
 
     <form method="post">
         <button type="submit" name="choice" value="travel">
-            Travel
+            Stay on I-95
         </button>
         <button type="submit" name="choice" value="rest">
-            Rest
+            Stay in Augusta
         </button>
         <button type="submit" name="choice" value="risk">
-            Visit Store
+            Follow Gary's Shortcut
         </button>
         <button type="submit" name="choice" value="reset">
             Reset Game
