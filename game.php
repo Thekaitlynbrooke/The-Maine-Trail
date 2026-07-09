@@ -51,8 +51,14 @@ if (!isset($_SESSION['money'])) {
 if ($_SESSION['gas'] < 0) {
     $_SESSION['gas'] = 0;
 }
+if ($_SESSION['gas'] > 100) {
+    $_SESSION['gas'] = 100;
+}
 if ($_SESSION['morale'] < 0) {
     $_SESSION['morale'] = 0;
+}
+if ($_SESSION['morale'] > 100) {
+    $_SESSION['morale'] = 100;
 }
 if ($_SESSION['progress'] > 100) {
     $_SESSION['progress'] = 100;
