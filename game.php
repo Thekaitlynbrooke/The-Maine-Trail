@@ -34,7 +34,7 @@ if (!isset($_SESSION['money'])) {
     $_SESSION['morale'] += 10;
     $_SESSION['storm'] += 10;
 
-    $_SESSION['message'] = "You settle in for the night. Tomorrow's problems can wait until tomorrow.";
+    $_SESSION['message'] = "These people are weird. If there's a storm, you'd rather sleep through it.";
 }
     if ($_POST['choice'] == 'risk') {
         $chance = rand(1, 2);
@@ -124,10 +124,10 @@ a pickup truck that's seen better decades.</p>
 <p>He nods toward the gray sky.</p>
 <p>"Storm's comin' early this year."</p>
 <p>"...Should I be worried?"</p>
-<p>"Depends how much you trust your brakes."</p>
+<p>"Depends how much you trust your tires."</p>
 <p>Well.</p>
-<p>That wasn't ominous at all.</p>
-<p> As you're pulling getting back in the car, another customer points toward the truck. </p>
+<p>That makes me feel all warm and fuzzy.</p>
+<p> As you're getting back in the car, another stranger points toward the truck. </p>
 <p> "That's Gary."</p>
 <p> "Who's Gary?"</p>
 <p> "You know... Gary."</p>
