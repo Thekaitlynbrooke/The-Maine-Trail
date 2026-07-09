@@ -128,33 +128,7 @@ include 'header.php';
 </div>
     </div>
 </div>
-<div class="instructions">
 
-    <h2>📖 Before You Head Out...</h2>
-    <p>
-        Every choice changes your journey.
-    </p>
-    <p>
-        Sometimes the safe choice costs you time.
-        Sometimes the risky choice pays off.
-        Sometimes it absolutely does not.
-    </p>
-    <p>
-        There isn't always a right answer.
-        You're just trying to make it to Mabel's Cabin in one piece.
-    </p>
-    <p class="warning">
-        <strong>Fair warning:</strong>
-        Your choices can change your
-        <strong>Money</strong>,
-        <strong>Gas</strong>, and
-        <strong>Morale</strong>.
-    </p>
-    <p class="tiny-note">
-        Try not to become the main character of the next Dateline.
-    </p>
-
-</div>
 
 <?php
 include 'footer.php';
