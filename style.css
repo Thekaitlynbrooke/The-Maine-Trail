@@ -141,7 +141,11 @@ p {
 
 .event-window p {
 
-    font-size: 22px;
+    font-size: 18px;
+
+    margin: 10px 0;
+
+    line-height: 1.4;
 
 }
 
@@ -149,15 +153,15 @@ p {
 
 .choices {
 
-    margin-top: 35px;
+    margin-top: 15px;
 
 }
 
 .choices button {
 
-    margin: 10px;
+    margin: 5px;
 
-    padding: 14px 28px;
+    padding: 10px 18px;
 
     background-color: #c9a87a;
 
@@ -169,7 +173,7 @@ p {
 
     font-family: inherit;
 
-    font-size: 18px;
+    font-size: 16px;
 
     cursor: pointer;
 
