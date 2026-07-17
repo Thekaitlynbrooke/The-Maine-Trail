@@ -84,7 +84,7 @@ if ($_SESSION['event'] == 2) {
     $_SESSION['money'] -= 20;
     $_SESSION['morale'] += 10;
     $_SESSION['storm'] += 10;
-    $_SESSION['message'] = "You pull into a gravel and snap a few pictures. The moose ignores everyone. You're beginning to suspect people in Maine schedule their day around moose instead of the other way around.";
+    $_SESSION['message'] = "You pull off into the gravel and snap a few pictures. The moose ignores everyone. You're beginning to suspect people in Maine schedule their day around moose instead of the other way around.";
 }
     // Event 2 risk
 if ($_POST['choice'] == 'risk') {
@@ -155,8 +155,42 @@ if ($_SESSION['event'] == 3) {
 if ($_SESSION['event'] == 4) {
 
     // Event 4 travel
+     if ($_POST['choice'] == 'travel') {
+        $_SESSION['progress'] += 15;
+        $_SESSION['gas'] -= 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "The highway is quiet. Maybe the cashier was just making conversation. As you merge back onto the highway, an old pickup passes in the opposite direction.
+                                Wait, isn't that...?
+                                Gary lifts two fingers from the steering wheel in a casual wave.
+                                This guy feels like an unlucky penny.";
+    }
     // Event 4 rest
+     if ($_POST['choice'] == 'rest') {
+        $_SESSION['money'] -= 20;
+        $_SESSION['morale'] += 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "You browse a wall of Stephen King novels. As you leave, the cashier smiles. 'Enjoy the trip.' You can't tell if he means the drive... or something else.";
+    }
     // Event 4 risk
+     if ($_POST['choice'] == 'risk') {
+
+        $chance = rand(1, 2);
+
+        if ($chance == 1) {
+            $_SESSION['progress'] += 20;
+            $_SESSION['gas'] -= 15;
+            $_SESSION['morale'] += 5;
+            $_SESSION['message'] = "Google Maps finds a faster route that actually works. You make a mental note to stop insulting your GPS.";
+
+        } else {
+            $_SESSION['progress'] += 5;
+            $_SESSION['gas'] -= 25;
+            $_SESSION['morale'] -= 15;
+            $_SESSION['message'] = "Google Maps proudly announces you've arrived. You're in the middle of nowhere. Eventually it recalculates. Very generous, kind sir.";
+        }
+
+        $_SESSION['storm'] += 10;
+    }
 
 }
 // =======================================================
@@ -165,8 +199,46 @@ if ($_SESSION['event'] == 4) {
 if ($_SESSION['event'] == 5) {
 
     // Event 5 travel
+    if ($_POST['choice'] == 'travel') {
+        $_SESSION['progress'] += 15;
+        $_SESSION['gas'] -= 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "Granola bars and questionable gas station trail mix have carried you this far. They can probably carry you a little farther.";
+    }
     // Event 5 rest
+    if ($_POST['choice'] == 'rest') {
+        $_SESSION['money'] -= 20;
+        $_SESSION['morale'] += 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "But not too broke for the Diner with a statue of a fat man outside. The food is cheap and hits the spot. 
+        I don’t know who the governor is but I wouldn’t be surprised if it’s the guy in the corner eating a whoopie pie.";
+    }
     // Event 5 risk
+    if ($_POST['choice'] == 'risk') {
+
+        $chance = rand(1, 2);
+
+        if ($chance == 1) {
+            $_SESSION['progress'] += 20;
+            $_SESSION['gas'] -= 15;
+            $_SESSION['morale'] += 5;
+            $_SESSION['message'] = "You take your first bite.
+                                    Okay.
+                                    You hate admitting it... but that might be the best sandwich you've ever had. 
+                                    You briefly consider buying another one before remembering you're not independently wealthy.";
+
+        } else {
+            $_SESSION['progress'] += 5;
+            $_SESSION['gas'] -= 25;
+            $_SESSION['morale'] -= 15;
+            $_SESSION['message'] = "The lobster roll is... fine. 
+                                    But no sandwich should make you question your financial future. 
+                                    ‼️Blrpblrpblrp‼️
+                                    Oh my dog, was that my stomach?🤢";
+        }
+
+        $_SESSION['storm'] += 10;
+    }
 
 }
 // =======================================================
@@ -175,8 +247,45 @@ if ($_SESSION['event'] == 5) {
 if ($_SESSION['event'] == 6) {
 
     // Event 6 travel
+    if ($_POST['choice'] == 'travel') {
+        $_SESSION['progress'] += 15;
+        $_SESSION['gas'] -= 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "Whatever crossed the road is now someone else's problem. You turn the radio up.
+                                If you can't hear it... it can't hear you.";
+    }
     // Event 6 rest
+    if ($_POST['choice'] == 'rest') {
+        $_SESSION['money'] -= 20;
+        $_SESSION['morale'] += 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "You put the car in park and take a breath before another pickup rolls past. The driver gives you a casual wave. 
+                                Gary. Of course.
+                                You wave back reluctantly... and you still have absolutely no idea who Gary is.";
+    }
     // Event 6 risk
+    if ($_POST['choice'] == 'risk') {
+
+        $chance = rand(1, 2);
+
+        if ($chance == 1) {
+            $_SESSION['progress'] += 20;
+            $_SESSION['gas'] -= 15;
+            $_SESSION['morale'] += 5;
+            $_SESSION['message'] = "The footprints disappear into the woods after only a few yards. 
+                                    You never find whatever made them. At least now you'll have a story nobody is going to believe.";
+
+        } else {
+            $_SESSION['progress'] += 5;
+            $_SESSION['gas'] -= 25;
+            $_SESSION['morale'] -= 15;
+            $_SESSION['message'] = "The footprints simply... stop. No return tracks. No explanation. 
+                                    You suddenly become very aware of how quiet the forest is. 
+                                    Until you hear footsteps in the leaves. Running is any direction seems logical🏃🏻💨";
+        }
+
+        $_SESSION['storm'] += 10;
+    }
 
 }
 // =======================================================
@@ -185,8 +294,39 @@ if ($_SESSION['event'] == 6) {
 if ($_SESSION['event'] == 7) {
 
     // Event 7 travel
+    if ($_POST['choice'] == 'travel') {
+        $_SESSION['progress'] += 15;
+        $_SESSION['gas'] -= 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "You've made it this far. Six more miles isn't going to stop you now. You tighten your grip on the steering wheel and press on.🗺️";
+    }
     // Event 7 rest
+    if ($_POST['choice'] == 'rest') {
+        $_SESSION['money'] -= 20;
+        $_SESSION['morale'] += 10;
+        $_SESSION['storm'] += 10;
+        $_SESSION['message'] = "Cell service isn’t strong enough to pull up the radar. Better stop and see if anyone has a working tv or wifi.";
+    }
     // Event 7 risk
+    if ($_POST['choice'] == 'risk') {
+
+        $chance = rand(1, 2);
+
+        if ($chance == 1) {
+            $_SESSION['progress'] += 20;
+            $_SESSION['gas'] -= 15;
+            $_SESSION['morale'] += 5;
+            $_SESSION['message'] = "For once, Google Maps knows exactly what it's is doing. You shave a few precious minutes off the trip.";
+
+        } else {
+            $_SESSION['progress'] += 5;
+            $_SESSION['gas'] -= 25;
+            $_SESSION['morale'] -= 15;
+            $_SESSION['message'] = "Google Maps proudly reroutes you to a dirt road with a locked gate awaiting at the end. It offers no apology. Naturally.";
+        }
+
+        $_SESSION['storm'] += 10;
+    }
 
 }
 
@@ -305,8 +445,8 @@ a pickup truck next to you as you top off.</p>
  <?php if ($_SESSION['event'] == 3) { ?>
 
     <h2>Peak Leaf Peeper Season</h2>
-    <p> The camper in front of you has been breaking every thirty seconds. Then it stops dead in the middle of the road. </p>
-    <p> A camera appears out of the driver side window.</p>
+    <p> The camper in front of you has been braking every thirty seconds. Then it stops dead in the middle of the road. </p>
+    <p> A camera appears out of the driver's side window.</p>
     <p>Apparently the leaves on these particular trees were worth blocking traffic for.</p>
   
 <?php } ?>
@@ -316,11 +456,22 @@ a pickup truck next to you as you top off.</p>
 // =============================================================== -->
  <?php if ($_SESSION['event'] == 4) { ?>
 
-    <h2>Bangor After Dark</h2>
-    <p> </p>
-    <p> </p>
-    <p></p>
-  
+    <h2>People Here Really Like Stephen King...</h2>
+    <p>This particular gas station is the last one on Google maps for a minute.</p>
+    <p>The pump won't work, so you head inside.</p>
+    <p>Also, why does every gas station in this state have a full liquor store and a gift shop?</p>
+    <p>As you set your phone on the counter, Google Maps announces, "Continue north for 82 miles."</p>
+    <p>The cashier glances up at you.</p>
+    <p>"Headin' north?"</p>
+    <p>"Trying to"</p>
+    <p>"You read Stephen King?"</p>
+    <p>"Um, yeah I guess"</p>
+    <p>He looks outside to the tree line</p>
+    <p>"Good."</p>
+    <p>You wait for him to continue.</p>
+    <p>He doesn't.</p>
+    <p>😳</p>
+
     
 <?php } ?>
 
@@ -330,10 +481,11 @@ a pickup truck next to you as you top off.</p>
  <?php if ($_SESSION['event'] == 5) { ?>
 
     <h2>Lobster Roll Economics</h2>
-    <p> </p>
-    <p> </p>
-    <p></p>
-  
+    <p>A roadside shack claiming to have the BEST LOBSTER ROLLS IN MAINE comes into view as your stomach sends out an SOS signal.</p>
+    <p>"🦞Market Price🦞"</p>
+    <p>"How much is market price?</p>
+    <p>"$34"</p>
+    <p>This lobster better have a passport</p>
     
 <?php } ?>
 
@@ -343,9 +495,11 @@ a pickup truck next to you as you top off.</p>
  <?php if ($_SESSION['event'] == 6) { ?>
 
     <h2>Definitely Not Big Foot</h2>
-    <p> </p>
-    <p> </p>
-    <p></p>
+    <p>No one mentions that the sun sets at 4 pm up here. Something crosses in front of your headlights up ahead.</p>
+    <p>Too tall to be a person</p>
+    <p>Deer don't stand on two legs</p>
+    <p>Maybe a moose who lost its front legs from angry Leaf Peepers who needed to get to their leaves.</p>
+    <p>👀</p>
   
     
 <?php } ?>
@@ -356,9 +510,15 @@ a pickup truck next to you as you top off.</p>
  <?php if ($_SESSION['event'] == 7) { ?>
 
     <h2>One Last Stop</h2>
-    <p> </p>
-    <p> </p>
-    <p></p>
+    <p>These towns keep getting smaller and smaller.</p>
+    <p>One blinking traffic light.</p>
+    <p>One gas station.</p>
+    <p>One diner</p>
+    <p>Google Maps: "Continue for 6 miles."</p>
+    <p>The snow started falling about 10 miles ago...</p>
+    <p>Gary's warning rings in your mind, "Storm's comin' early this year."</p>
+    <p>Feels like a threat.</p>
+      
   
     
 <?php } ?>
